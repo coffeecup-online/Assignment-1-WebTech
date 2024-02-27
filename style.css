@@ -95,6 +95,8 @@ footer {
     text-align: center;
     margin-top: 30px;
     margin-left: 100px;
+    background-color: #a80000;
+    padding-top: 30px;
 }
 
 .additional-images figure {
@@ -114,6 +116,8 @@ footer {
     margin-top: 10px;
     overflow: hidden;
     font-family: Arial;
+    font-weight: bolder;
+    color :#d4d4d4
 }
 
 h2{
