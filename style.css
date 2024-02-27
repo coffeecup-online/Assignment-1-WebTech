@@ -92,15 +92,31 @@ footer {
 }
 
 .additional-images {
-    text-align: left;
+    text-align: center;
     margin-top: 30px; /* Add spacing between the text-author and additional images */
     margin-left: 100px;
-    
+}
+
+.additional-images figure {
+    display: inline-block;
+    text-align: center;
+    margin: 0 20px; /* Adjust spacing between figures */
 }
 
 .additional-images img {
     width: 160px; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
-    margin: 20px; /* Add spacing between images */
+}
 
+.additional-images figcaption {
+    width: 160px; /* Set the width of the figcaption */
+    margin-top: 10px; /* Adjust spacing between image and figcaption */
+}
+
+h2{
+    text-align: center;
+    font-family: Arial;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top:20px ;
 }
