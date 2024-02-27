@@ -68,3 +68,39 @@ footer {
     padding: 15px;
     font-size: 15px;
   }
+
+
+
+.text-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens if necessary */
+    text-align: center; /* Center-align the text */
+    padding: 80px; /* Add padding as needed */
+}
+
+.author-info {
+    flex: 1; /* Take remaining space */
+    padding: 0 40px;
+}
+
+.author-image img {
+    width: 400px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 40px; /* Add spacing between text and image */
+}
+
+.additional-images {
+    text-align: left;
+    margin-top: 30px; /* Add spacing between the text-author and additional images */
+    margin-left: 100px;
+    
+}
+
+.additional-images img {
+    width: 160px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px; /* Add spacing between images */
+
+}
