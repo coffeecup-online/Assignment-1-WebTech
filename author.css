@@ -113,7 +113,7 @@
     color:#d4d4d4;
     text-align: center;
     font-size: 5rem;
-    margin-left: 30%;
+    margin-left: 45%;
   }
   
   .banner_overlay {
@@ -199,3 +199,29 @@ h3{
     
 }
 
+@media screen and (max-width: 760px) {
+    .logo a img {
+      padding: 0px;
+    }
+  
+    .action {
+      display: none;
+    }
+    header {
+      justify-content: space-around;
+    }
+  }
+  
+@media screen and (max-width: 480px) {
+header nav li {
+    font-size: 12px;
+}
+.action {
+    display: none;
+}
+#footer_left,
+#footer_right {
+    display: none;
+}
+
+}

@@ -115,7 +115,7 @@
     color:#d4d4d4;
     text-align: center;
     font-size: 5rem;
-    margin-left: 30%;
+    margin-left: 35%;
   }
   
   .banner_overlay {
@@ -139,7 +139,7 @@ footer {
     font-size: 15px;
   }
 
-  
+
 /* Contact_Form */
 #Contact_Form {
     border: 2px solid white;
@@ -162,7 +162,7 @@ footer {
   }
   input{
     padding: 3px;
-    font-family: "Special Elite", cursive;
+    font-family: "Times New Roman", cursive;
     display: flex;
   }
   input[type=text], input[type=email] {
@@ -174,14 +174,14 @@ footer {
 
   input::placeholder {
     padding: 3px;
-    font-family: "Special Elite", cursive;
+    font-family: "Times New Roman", cursive;
   }
     
   textarea {
     height: 100px;
     width: 90%;
     padding: 6px;
-    font-family: "Special Elite", cursive;
+    font-family: "Times New Roman", cursive;
     
   }
   textarea::placeholder {
@@ -194,10 +194,31 @@ footer {
     text-align: center;
     padding: 8px;
   }
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Special Elite", cursive;
+
+  @media screen and (max-width: 760px) {
+    .logo a img {
+      padding: 0px;
+    }
+  
+    .action {
+      display: none;
+    }
+    header {
+      justify-content: space-around;
+    }
   }
+  
+@media screen and (max-width: 480px) {
+header nav li {
+    font-size: 12px;
+}
+.action {
+    display: none;
+}
+#footer_left,
+#footer_right {
+    display: none;
+}
+
+}
   
