@@ -137,5 +137,65 @@ footer {
     font-size: 15px;
   }
 
+#background-video {
+    width: 100%;
+
+}
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.home-video{
+    width: 50%;
+    padding: 1rem;
+}
+.home-text{
+    width: 50%;
+    padding: 2rem;
+    text-align: justify;
+    line-height: 2rem;
+    color: #75838c;
+}
+.home-text h2 {
+    padding-bottom: 1.5rem;
+    color: black;
+  }
 
 
+@media screen and (max-width: 760px) {
+    .logo a img {
+      padding: 0px;
+    }
+  
+    .action {
+      display: none;
+    }
+    header {
+      justify-content: space-around;
+    }
+    .home {
+        display: block;
+        margin: 1rem;
+      }
+      .home-text {
+        width: 100%;
+      }
+      .home-video{
+        width: 100%;
+      }
+  }
+  
+@media screen and (max-width: 480px) {
+header nav li {
+    font-size: 12px;
+}
+.action {
+    display: none;
+}
+#footer_left,
+#footer_right {
+    display: none;
+}
+
+}
