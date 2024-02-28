@@ -113,7 +113,7 @@
     color:#d4d4d4;
     text-align: center;
     font-size: 5rem;
-    margin-left: 30%;
+    margin-left: 35%;
   }
   
   .banner_overlay {
@@ -196,3 +196,39 @@ footer {
     padding: 4rem;
   }
   
+  @media screen and (max-width: 760px) {
+    .logo a img {
+      padding: 0px;
+    }
+  
+    .action {
+      display: none;
+    }
+    header {
+      justify-content: space-around;
+    }
+    .home {
+        display: block;
+        margin: 1rem;
+      }
+      .home-text {
+        width: 100%;
+      }
+      .home-video{
+        width: 100%;
+      }
+  }
+  
+@media screen and (max-width: 480px) {
+header nav li {
+    font-size: 12px;
+}
+.action {
+    display: none;
+}
+#footer_left,
+#footer_right {
+    display: none;
+}
+
+}
