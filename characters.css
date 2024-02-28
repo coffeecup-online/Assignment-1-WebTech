@@ -110,9 +110,10 @@
   }
   
   .banner_overlay h2 {
-    color: #a80000;
+    color:#d4d4d4;
     text-align: center;
     font-size: 5rem;
+    margin-left: 30%;
   }
   
   .banner_overlay {

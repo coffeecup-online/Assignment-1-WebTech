@@ -110,9 +110,10 @@
   }
   
   .banner_overlay h2 {
-    color: #a80000;
+    color:#d4d4d4;
     text-align: center;
     font-size: 5rem;
+    margin-left: 30%;
   }
   
   .banner_overlay {
@@ -136,37 +137,73 @@ footer {
     font-size: 15px;
   }
 
-  .text-author-top {
+.text-plot-top {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
-    padding : 3rem;
-}
-.text-author-bottom {
-    padding : 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 4% 10% 4% 10%;
 }
 
-.author-info {
-    width: 50%;
-    padding-left: 3%;
-    font-size: 19px;
+.plot-image1 img,
+.plot-image2 img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+.plot-image1,
+.plot-image2 {
+    width: 28%; /* Adjust the width as needed, leaving some space for a margin in between */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin: 1%; /* Optional: Add some space between the images and text */
+}
+
+.plot-info {
+    flex: 1;
+    width: 40%;
+    margin-left: 2%; /* Adjust the margin as needed */
+    font-size: 110%;
     line-height: 1.6;
 }
 
-.author-image1 img {
-    width: 100%;
-    
+h1 {
+    text-align: center;
+    font-family: Arial;
+    font-size: 240%;
+    font-weight: bold;
+    margin-top: 2%;
+}
 
+.charactername {
+    color: #731010;
+    font-size: 120%;
 }
 
 
-h1{
-    text-align: center;
-    font-family: Arial;
-    font-size: 40px;
-    font-weight: bold;
-    margin-top:20px ;
+
+.text-plot-bottom {
+  display: flex;
+  justify-content: flex-start; /* Align items at the start (left) */
+  align-items: center;
+  text-align: right; /* Align the text to the left */
+}
+
+.plot-info2 {
+  flex: 1;
+  font-size: 110%;
+  line-height: 1.6;
+}
+
+.plot-image3 img {
+  max-width: 100%;
+  height: auto;
+  width: 50%; /* Adjust the width of the image as needed */
+  display: block; /* Center the image within its container */
+  margin: 0 ; /* Center the image horizontally */
+}
+
+.plot-image3 {
+  flex-shrink: 0; /* Prevent the image from shrinking too much */
+  box-sizing: border-box;
+  width: 20%; /* Adjust the width as needed */
+  margin: 0 30% 0 1%; /* Add some margin to the left of the image */
 }
