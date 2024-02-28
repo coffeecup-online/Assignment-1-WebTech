@@ -66,19 +66,19 @@
   
   .action {
     width: 20%;
-    background-color: #724849;
+    background-color: #707070;
     text-align: center;
     padding: 2rem;
   }
   
   .action a {
-    color: white;
+    color: #d4d4d4;
     text-decoration: none;
   }
   
   .action:hover {
-    color: white;
-    background-color: #75838c;
+    color: #d4d4d4;
+    background-color: #707070;
   }
   
   .logo {
