@@ -202,36 +202,6 @@ h1 {
 }
 }
 
-
-
-.text-plot-bottom {
-  display: flex;
-  justify-content: flex-start; 
-  align-items: center;
-  text-align: right; 
-}
-
-.plot-info2 {
-  flex: 1;
-  font-size: 110%;
-  line-height: 1.6;
-}
-
-.plot-image3 img {
-  max-width: 100%;
-  height: auto;
-  width: 50%; 
-  display: block;
-  margin: 0 ;
-}
-
-.plot-image3 {
-  flex-shrink: 0;
-  box-sizing: border-box;
-  width: 30%; 
-  margin: 0 20% 0 1%; 
-}
-
 @media screen and (max-width: 760px) {
   .logo a img {
     padding: 0px;
@@ -258,3 +228,34 @@ header nav li {
 }
 
 }
+
+
+.text-plot-bottom {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+  text-align: right; 
+}
+
+.plot-info2 {
+  flex: 1;
+  font-size: 110%;
+  line-height: 1.6;
+  color :#1f1f1f;
+}
+
+.plot-image3 img {
+  max-width: 100%;
+  height: auto;
+  width: 50%; 
+  display: block;
+  margin: 0 ;
+}
+
+.plot-image3 {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 30%; 
+  margin: 0 20% 0 1%; 
+}
+
