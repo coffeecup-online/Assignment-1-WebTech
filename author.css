@@ -199,6 +199,14 @@ h3{
     
 }
 
+@media screen and (max-width: 800px) {
+
+.author-image img {
+  width: 100%;
+  height: auto;
+}
+}
+
 @media screen and (max-width: 760px) {
     .logo a img {
       padding: 0px;
