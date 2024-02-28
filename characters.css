@@ -191,7 +191,6 @@ footer {
   }
   
   .characters {
-    background-image: url("./assets/images/bg-img.jpg");
     margin-top: 1rem;
     padding: 4rem;
   }
@@ -207,6 +206,11 @@ footer {
     header {
       justify-content: space-around;
     }
+    .banner_overlay h2 {
+        color:#d4d4d4;
+        text-align: center;
+        font-size: 3rem;
+      }
     .home {
         display: block;
         margin: 1rem;
@@ -226,6 +230,12 @@ header nav li {
 .action {
     display: none;
 }
+.banner_overlay h2 {
+    color:#d4d4d4;
+    text-align: center;
+    font-size: 2rem;
+
+  }
 #footer_left,
 #footer_right {
     display: none;

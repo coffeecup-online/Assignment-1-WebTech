@@ -210,6 +210,12 @@ h1 {
   .action {
     display: none;
   }
+  .banner_overlay h2 {
+    color:#d4d4d4;
+    text-align: center;
+    font-size: 3rem;
+    padding-left: 40%;
+  }
   header {
     justify-content: space-around;
   }
@@ -221,6 +227,12 @@ header nav li {
 }
 .action {
   display: none;
+}
+.banner_overlay h2 {
+  color:#d4d4d4;
+  text-align: center;
+  font-size: 3rem;
+  padding-left: 40%;
 }
 #footer_left,
 #footer_right {

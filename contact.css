@@ -206,6 +206,12 @@ footer {
     header {
       justify-content: space-around;
     }
+    .banner_overlay h2 {
+        color:#d4d4d4;
+        text-align: center;
+        font-size: 3rem;
+        padding-left: 25%;
+      }
   }
   
 @media screen and (max-width: 480px) {
@@ -215,6 +221,13 @@ header nav li {
 .action {
     display: none;
 }
+.banner_overlay h2 {
+    color:#d4d4d4;
+    text-align: center;
+    font-size: 2rem;
+    padding-left: 0%;
+  }
+
 #footer_left,
 #footer_right {
     display: none;
