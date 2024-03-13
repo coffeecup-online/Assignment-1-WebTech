@@ -142,20 +142,20 @@ footer {
 /* Character Table */
 
 .even {
-    color: white;
-    background-color: #724849;
+    color: #d4d4d4;
+    background-color: #731010;
     text-align: center;
   }
   
   .odd {
-    color: white;
-    background-color: #243340;
+    color: #d4d4d4;
+    background-color: #1f1f1f;
     text-align: center;
   }
   
   .even:hover,
   .odd:hover {
-    background-color: #75838c;
+    background-color: #707070;
   }
   
   .demTable {
@@ -181,7 +181,7 @@ footer {
     text-align: center;
     font-weight: 900;
     font-size: 1.5rem;
-    text-decoration: underline red;
+    text-decoration: underline #a80000;
     padding: 1rem;
   }
   

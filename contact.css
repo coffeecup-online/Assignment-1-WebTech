@@ -152,9 +152,7 @@ footer {
   }
   form{
     padding: 5px;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
+    width: 60%;
     border: 2px solid #1f1f1f;
 
   }
@@ -162,38 +160,18 @@ footer {
     color: #1f1f1f;
   }
   input{
-    padding: 3px;
-    font-family: "Times New Roman", cursive;
+    font-family: "Times New Roman", italic;
     display: flex;
   }
-  input[type=text], input[type=email] {
+  input[type=text], input[type=email],input[type=textarea]{
     padding: 5px;
     background-color: white;
     color: black;
-    width: 40%;
+    width: 50%;
   }
-
   input::placeholder {
     padding: 3px;
     font-family: "Times New Roman", cursive;
-  }
-    
-  textarea {
-    height: 100px;
-    width: 90%;
-    padding: 6px;
-    font-family: "Times New Roman", cursive;
-    
-  }
-  textarea::placeholder {
-    padding: 3px;
-  }
-
-  /* Text */
-
-  .Text {
-    text-align: center;
-    padding: 8px;
   }
 
   @media screen and (max-width: 760px) {
@@ -228,6 +206,13 @@ header nav li {
     font-size: 2rem;
     padding-left: 0%;
   }
+  input[type=text], input[type=email],input[type=textarea]{
+    padding: 5px;
+    background-color: white;
+    color: black;
+    width: 100%;
+  }
+
 
 #footer_left,
 #footer_right {
