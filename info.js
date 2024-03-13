@@ -11,7 +11,14 @@ class CreativeWork {
     }
 }
 class Person {
-
+  constructor(
+    name,
+    birthyear,
+    
+  ) {
+    this.name = name;
+    this.birthyear = birthyear;
+  }
 }
 
 class Company {
@@ -56,7 +63,16 @@ class Book extends CreativeWork {
 }
 
 class Author  extends Person    {
-
+  constructor(
+    name,
+    birthyear,
+    titles,
+    wiki
+  ) {
+    super(name,birthyear);
+    this.titles = titles;
+    this.wiki = wiki;
+  }
 }
 
 
@@ -72,8 +88,8 @@ const NTEF = new Book(
     "1984",
     "thriller",
     SW.name,
-    "foto",
-    "plot"
+    "./assets/pictures/book1.jpg",
+    "hier moet alle tekst komen over dit boek"
 )
 
 console.log(Book);
@@ -197,7 +213,8 @@ const createSectionMenu = () => {
   };
 
   const header = document.querySelector("header");
-
+  const footer = document.querySelector("footer");
+  const action = document.getElementById("action");
 
 window.onload = () => {
     const body = document.querySelector("body");
@@ -211,13 +228,13 @@ window.onload = () => {
 
   
     // Append logo div, navigation nav, and action div to header
-    header.appendChild(headerMenu);
+    header.insertBefore(headerMenu, action);
 
-    console.log(body)
+    console.log(header.childNodes)
     
 
     const articleSection = document.createElement("article");
-    body.appendChild(articleSection);
+    body.insertBefore(articleSection, footer);
   
     //Insert Book Info to Article
   
@@ -236,6 +253,7 @@ window.onload = () => {
     bookYear.classList = "year";
     bookYear.innerText = NTEF.year;
     articleSection.appendChild(bookYear);
+    
 
     const bookGenre = document.createElement("p");
     bookGenre.classList = "genre";
@@ -247,9 +265,9 @@ window.onload = () => {
     bookPublisher.innerText = NTEF.Publisher;
     articleSection.appendChild(bookPublisher);
 
-    const bookCover = document.createElement("p");
+    const bookCover = document.createElement("img");
+    bookCover.setAttribute("src", NTEF.cover);
     bookCover.classList = "cover";
-    bookCover.innerText = NTEF.cover;
     articleSection.appendChild(bookCover);
 
     const bookPlot = document.createElement("p");
@@ -257,6 +275,17 @@ window.onload = () => {
     bookPlot.innerText = NTEF.plot;
     articleSection.appendChild(bookPlot);
   
+
+    const footerMenu = document.createElement("div");
+    footerMenu.classList = "footerMenu";
+  
+    footerMenu.appendChild(createSectionMenu());
+    footerMenu.appendChild(createStyleMenu());
+  
+  
+    
+      // Append logo div, navigation nav, and action div to footer
+      footer.appendChild(footerMenu);
   
 }
 
@@ -264,3 +293,6 @@ window.onload = () => {
 
 header.addEventListener("change", (e) => SelectSection(e));
 header.addEventListener("change", (e) => ChangeStyle(e));
+
+footer.addEventListener("change", (e) => SelectSection(e));
+footer.addEventListener("change", (e) => ChangeStyle(e));
