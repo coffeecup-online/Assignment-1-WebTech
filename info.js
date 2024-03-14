@@ -217,12 +217,16 @@ const createSectionMenu = () => {
   const action = document.getElementById("action");
 
 
+
+
   const createTooltip = (text) => {
     const tooltip = document.createElement("div");
     tooltip.classList.add("tooltip");
     tooltip.textContent = text;
     return tooltip;
 };
+
+
 
 
 
@@ -271,7 +275,7 @@ window.onload = () => {
 
 
   // Create tooltips for author name and book cover
-  const authorTooltip = createTooltip(NTEF.authors);
+  const authorTooltip = createTooltip("Author: " + NTEF.authors);
   bookAuthor.appendChild(authorTooltip);
 
   const coverTooltip = createTooltip("Book Cover");
