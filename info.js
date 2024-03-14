@@ -39,7 +39,7 @@ class Publisher extends Company {
         titles
     ) {
         super(name,wiki);
-        this.tiles = titles;
+        this.titles = titles;
     }
 }
 
@@ -216,77 +216,83 @@ const createSectionMenu = () => {
   const footer = document.querySelector("footer");
   const action = document.getElementById("action");
 
+
+  const createTooltip = (text) => {
+    const tooltip = document.createElement("div");
+    tooltip.classList.add("tooltip");
+    tooltip.textContent = text;
+    return tooltip;
+};
+
+
+
 window.onload = () => {
-    const body = document.querySelector("body");
-      //header sub menu / styles
-  const headerMenu = document.createElement("div");
-  headerMenu.classList = "headerMenu";
+  const body = document.querySelector("body");
+  const header = document.querySelector("header");
+  const footer = document.querySelector("footer");
 
-  headerMenu.appendChild(createSectionMenu());
-  headerMenu.appendChild(createStyleMenu());
+  const articleSection = document.createElement("article");
+  body.insertBefore(articleSection, footer);
+
+  // Insert Book Info to Article
+  const bookHeader = document.createElement("h2");
+  bookHeader.innerText = NTEF.bookTitle;
+  articleSection.appendChild(bookHeader);
+
+  const bookAuthor = document.createElement("span");
+  bookAuthor.classList = "authors";
+  bookAuthor.innerText = NTEF.authors;
+  articleSection.appendChild(bookAuthor);
+
+  const bookYear = document.createElement("p");
+  bookYear.classList = "year";
+  bookYear.innerText = NTEF.year;
+  articleSection.appendChild(bookYear);
+
+  const bookGenre = document.createElement("p");
+  bookGenre.classList = "genre";
+  bookGenre.innerText = NTEF.genre;
+  articleSection.appendChild(bookGenre);
+
+  const bookPublisher = document.createElement("p");
+  bookPublisher.classList = "publisher";
+  bookPublisher.innerText = NTEF.Publisher;
+  articleSection.appendChild(bookPublisher);
+
+  const bookCover = document.createElement("img");
+  bookCover.setAttribute("src", NTEF.cover);
+  bookCover.classList = "cover";
+  articleSection.appendChild(bookCover);
+
+  const bookPlot = document.createElement("p");
+  bookPlot.classList = "plot";
+  bookPlot.innerText = NTEF.plot;
+  articleSection.appendChild(bookPlot);
 
 
-  
-    // Append logo div, navigation nav, and action div to header
-    header.insertBefore(headerMenu, action);
+  // Create tooltips for author name and book cover
+  const authorTooltip = createTooltip(NTEF.authors);
+  bookAuthor.appendChild(authorTooltip);
 
-    console.log(header.childNodes)
-    
+  const coverTooltip = createTooltip("Book Cover");
+  bookCover.parentNode.insertBefore(coverTooltip, bookCover.nextSibling);
 
-    const articleSection = document.createElement("article");
-    body.insertBefore(articleSection, footer);
-  
-    //Insert Book Info to Article
-  
-    /// title, author, genre
-  
-    const bookHeader = document.createElement("h2");
-    bookHeader.innerText = NTEF.bookTitle;
-    articleSection.appendChild(bookHeader);
-  
-    const bookAuthor = document.createElement("span");
-    bookAuthor.classList = "authors";
-    bookAuthor.innerText = NTEF.authors;
-    articleSection.appendChild(bookAuthor);
+  // Show tooltips on hover over author name and cover image
+  bookAuthor.addEventListener("mouseenter", () => {
+      authorTooltip.style.display = "block";
+  });
+  bookCover.addEventListener("mouseenter", () => {
+      coverTooltip.style.display = "block";
+  });
 
-    const bookYear = document.createElement("p");
-    bookYear.classList = "year";
-    bookYear.innerText = NTEF.year;
-    articleSection.appendChild(bookYear);
-    
+  // Hide tooltips on mouse leave from author name and cover image
+  bookAuthor.addEventListener("mouseleave", () => {
+      authorTooltip.style.display = "none";
+  });
+  bookCover.addEventListener("mouseleave", () => {
+      coverTooltip.style.display = "none";
+  });
 
-    const bookGenre = document.createElement("p");
-    bookGenre.classList = "genre";
-    bookYear.innerText = NTEF.genre;
-    articleSection.appendChild(bookGenre);
-
-    const bookPublisher = document.createElement("p");
-    bookPublisher.classList = "publisher";
-    bookPublisher.innerText = NTEF.Publisher;
-    articleSection.appendChild(bookPublisher);
-
-    const bookCover = document.createElement("img");
-    bookCover.setAttribute("src", NTEF.cover);
-    bookCover.classList = "cover";
-    articleSection.appendChild(bookCover);
-
-    const bookPlot = document.createElement("p");
-    bookPlot.classList = "plot";
-    bookPlot.innerText = NTEF.plot;
-    articleSection.appendChild(bookPlot);
-  
-
-    const footerMenu = document.createElement("div");
-    footerMenu.classList = "footerMenu";
-  
-    footerMenu.appendChild(createSectionMenu());
-    footerMenu.appendChild(createStyleMenu());
-  
-  
-    
-      // Append logo div, navigation nav, and action div to footer
-      footer.appendChild(footerMenu);
-  
 }
 
 // menu events

@@ -220,6 +220,6 @@ header nav li {
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
-  z-index: 9999;
+  z-index: 1;
   display: none;
 }
