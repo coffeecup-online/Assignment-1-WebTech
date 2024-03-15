@@ -1,0 +1,267 @@
+
+  body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Times New Roman";
+    font-style: italic;
+  }
+  
+  /* navbar */
+  .nav-bar {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 100;
+  }
+  
+  header {
+    width: 1200px;
+    height: 80px;
+    background-color: #731010;
+    color: #1f1f1f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  header a {
+    color: #d4d4d4;
+    text-decoration: none;
+  }
+  header a:active {
+    color: #1f1f1f;
+  }
+  
+  header a:hover {
+    color: #1f1f1f;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+  }
+  
+  header nav a {
+    background-image: linear-gradient(#1f1f1f, #1f1f1f);
+    background-size: 0% 0.1em;
+    background-position-y: 100%;
+    background-position-x: 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s ease-in-out;
+  }
+  
+  a:hover,
+  a:focus,
+  a:active {
+    background-size: 100% 0.1em;
+    background-position-x: 0%;
+  }
+  
+  .action {
+    width: 20%;
+    background-color: #707070;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .action a {
+    color: #d4d4d4;
+    text-decoration: none;
+  }
+  
+  .action:hover {
+    color: #d4d4d4;
+    background-color: #707070;
+  }
+  
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+  }
+  
+  .logo a img {
+    padding: 1rem;
+    width: 100%;
+    min-width: 80px;
+  }
+  
+  .navigation {
+    width: 60%;
+    padding: 10px;
+  }
+  .headerMiddleDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .menu {
+    margin: 0rem 1rem;
+  }
+  /* Banner */
+  
+  .banner {
+    width: 100%;
+    height: 25rem;
+    background-image: url("./assets/pictures/1984.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: -2rem;
+  }
+  
+  .banner_overlay h2 {
+    color:#d4d4d4;
+    text-align: center;
+    font-size: 5rem;
+    margin-left: 35%;
+  }
+  
+  .banner_overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    color: white;
+    width: 100%;
+    height: 25rem;
+  }
+  
+  
+  /* Section */
+  section {
+    width: 100%;
+    display: flex;
+
+  }
+  
+  .cover {
+    border: 1px solid gray;
+    box-shadow: 0px 5px 5px 0px;
+    margin: 5rem 0rem 5rem 10rem;
+  }
+  
+  .cover {
+    width: 25%;
+    height: 20%;
+  }
+  
+  
+  article {
+    width: 40%;
+    padding: 5rem 0rem 5rem 10rem;
+    line-height: 1.5rem;
+    min-height: 250px;
+  }
+
+  article h2 {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  
+  span {
+    padding: 3px;
+    border-radius: 3px;
+  }
+  
+  span.year,
+  span.genre {
+    margin: 0px 5px;
+    background-color: lightgray;
+    color: black;
+  }
+  span.year:hover,
+  span.genre:hover {
+    background-color: darkgray;
+  }
+  
+  .tooltipBox {
+    color: black;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 10px 10px 10px 0px;
+    box-shadow: 0px 5px 5px 0px;
+    position: absolute;
+    top: 40%;
+    z-index: 100;
+  }
+  
+  .p-name-tooltip {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .tooltipBox ul li {
+    padding: 0px 15px;
+  }
+  
+  footer {
+    text-align: center;
+    color: #1f1f1f;
+    justify-content: space-around;
+    display: flex;
+    padding: 15px;
+    font-size: 15px;
+  }
+
+  .footerMenu{
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 1024px) {
+    section {
+      display: block;
+      margin: 1rem;
+    }
+    article {
+      width: 100%;
+    }
+    .cover{
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 760px) {
+    .headerMiddleDiv {
+      width: 100%;
+    }
+    .logo,
+    .action {
+      display: none;
+    }
+    #footer_left {
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .tooltipBox {
+      top: 70%;
+    }
+    .poster {
+      display: block;
+      height: 100%;
+      width: 330px;
+      margin: auto;
+    }
+  
+    .thriller {
+      display: none;
+    }
+    #footer_right {
+      display: none;
+    }
+  }
+  

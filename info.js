@@ -1,9 +1,12 @@
+//GLOBALS
+let selectedSection = "body";
+let selectedStyle = "fontSize";
+// CLASSES
 class CreativeWork {
     constructor(
         authors,
         year,
         bookTitle
-        
     ) {
         this.authors = authors;
         this.year = year;
@@ -25,7 +28,6 @@ class Company {
     constructor(
         name,
         wiki,
-        
     ) {
         this.name = name;
         this.wiki = wiki;
@@ -36,10 +38,12 @@ class Publisher extends Company {
     constructor(
         name,
         wiki,
-        titles
+        titles,
+        image
     ) {
         super(name,wiki);
         this.titles = titles;
+        this.image = image
     }
 }
 
@@ -67,29 +71,45 @@ class Author  extends Person    {
     name,
     birthyear,
     titles,
-    wiki
+    wiki,
+    image
   ) {
     super(name,birthyear);
     this.titles = titles;
     this.wiki = wiki;
+    this.image = image
   }
 }
 
 
-const SW = new Publisher(
-    "Secker & Warburg",
-    "https://en.wikipedia.org/wiki/Harvill_Secker",
-    ["1984"]
-)
-
 const NTEF = new Book(
-    ["George Orwell"],
+    [
+      new Author(
+        "George Orwell",
+        1903,
+        ["Nineteen Eighty-Four",
+        "Animal Farm",
+        "Homage to Catalonia",
+        "The Road to Wigan Pier"],
+        "https://en.wikipedia.org/wiki/George_Orwell",
+        "https://www.hiperbolajanus.com/images/firmas/george-orwell_huc9559343339cd652fffb91c38c299d2b_6854551_256x256_fill_q75_h2_box_smart1.webp"
+      )
+    ],
     1954,
     "1984",
-    "thriller",
-    SW.name,
-    "./assets/pictures/book1.jpg",
-    "hier moet alle tekst komen over dit boek"
+    "Dystopian",
+
+    [new Publisher(
+      "Secker & Warburg",
+      "https://en.wikipedia.org/wiki/Harvill_Secker",
+      ["1984",
+      "Animal Farm",
+      "Homage to Catalonia",
+      "Minty Alley"],
+      "https://www.modernistarchives.com/files/styles/large/public/harvill_1_2.jpg"
+    )],
+    "./assets/pictures/cover.jpg",
+    "The story takes place in an imagined future in an unspecified year believed to be 1984, when much of the world is in perpetual war. Great Britain, now known as Airstrip One, has become a province of the totalitarian superstate Oceania, which is led by Big Brother, a dictatorial leader supported by an intense cult of personality manufactured by the Party's Thought Police. The Party engages in omnipresent government surveillance and, through the Ministry of Truth, historical negationism and constant propaganda to persecute individuality and independent thinking. The protagonist, Winston Smith, is a diligent mid-level worker at the Ministry of Truth who secretly hates the Party and dreams of rebellion. Smith keeps a forbidden diary. He begins a relationship with a colleague, Julia, and they learn about a shadowy resistance group called the Brotherhood. However, their contact within the Brotherhood turns out to be a Party agent, and Smith and Julia are arrested. He is subjected to months of psychological manipulation and torture by the Ministry of Love and is released once he has come to love Big Brother."
 )
 
 console.log(Book);
@@ -212,79 +232,174 @@ const createSectionMenu = () => {
     }
   };
 
-  const createDropdownMenu = () => {
-    const dropdownMenu = document.createElement("div");
-    dropdownMenu.classList.add("dropdown-menu");
 
-    // Create and append the section select menu
-    const selectSectionBox = createSectionMenu();
-    selectSectionBox.addEventListener("change", SelectSection);
-    dropdownMenu.appendChild(selectSectionBox);
 
-    // Create and append the style select menu
-    const selectStyleBox = createStyleMenu();
-    selectStyleBox.addEventListener("change", ChangeStyle);
-    dropdownMenu.appendChild(selectStyleBox);
 
-    return dropdownMenu;
+
+
+//create tooltip
+
+const insertTooltip = (e) => {
+  if (e.target.classList.value.includes("tooltip-container")) {
+    let p;
+
+    if (e.target.classList.value.includes("bookAuthor")) {
+      p = NTEF.authors.filter((item) =>
+        e.target.classList.value.includes(item.name)
+      );
+    }
+    if (e.target.classList.value.includes("bookPublisher")) {
+      p = NTEF.Publisher.filter((item) =>
+        e.target.classList.value.includes(item.name)
+      );
+    }
+
+    try {
+      //div.tooltip
+      let tooltip = document.createElement("div");
+      tooltip.classList = "tooltipBox";
+
+      let img = document.createElement("img");
+      imgUrl = p[0].image;
+      img.setAttribute("src", imgUrl);
+      img.setAttribute("alt", "Author / Publisher image");
+      img.setAttribute("width", "280px");
+      img.setAttribute("height", "320px");
+      tooltip.appendChild(img);
+
+      let p1 = document.createElement("p");
+      p1.classList = "p-name-tooltip";
+      p1.innerText = p[0].name;
+      tooltip.appendChild(p1);
+
+      if (p[0].birthyear != undefined){
+        let p2 = document.createElement("p");
+        p2.innerText = "Born: " + p[0].birthyear;
+        tooltip.appendChild(p2);
+      }
+
+      let p3 = document.createElement("p");
+      p3.innerText = "Other Titles";
+      tooltip.appendChild(p3);
+
+      let ul = document.createElement("ul");
+      let list = p[0].titles;
+
+      for (let i = 0; i < list.length; i++) {
+        let li = document.createElement("li");
+        li.innerText = list[i];
+        ul.appendChild(li);
+      }
+      tooltip.appendChild(ul);
+      e.target.appendChild(tooltip);
+    } catch (error) {}
+  }
 };
 
-
-  const header = document.querySelector("header");
-  const footer = document.querySelector("footer");
-  const action = document.getElementById("action");
-
-
-
-
-  const createTooltip = (text) => {
-    const tooltip = document.createElement("div");
-    tooltip.classList.add("tooltip");
-    tooltip.textContent = text;
-    return tooltip;
-};
-
-
-
+const deleteTooltip = (e) => {
+  try {
+    const tooltipContainer = e.target;
+    let tooltip = tooltipContainer.querySelector(".tooltipBox");
+    tooltipContainer.removeChild(tooltip);
+  } catch (error) {}
+};  
 
 
 window.onload = () => {
-  const body = document.querySelector("body");
   const header = document.querySelector("header");
+  const body = document.querySelector("body");
   const footer = document.querySelector("footer");
+  const headerMenu = document.createElement("div");
+  headerMenu.classList = "headerMenu";
 
+  headerMenu.appendChild(createSectionMenu());
+  headerMenu.appendChild(createStyleMenu());
+  header.appendChild(headerMenu)
+  const mainElem = document.createElement("main");
+
+  const bannerElem = document.createElement("div");
+  bannerElem.classList = "banner";
+
+  const bannerOverlayElem = document.createElement("div");
+  bannerOverlayElem.classList = "banner_overlay";
+
+  const headingElem = document.createElement("h2");
+  headingElem.textContent = "Info";
+
+  bannerOverlayElem.appendChild(headingElem);
+  bannerElem.appendChild(bannerOverlayElem);
+  mainElem.appendChild(bannerElem);
+
+  body.insertBefore(mainElem, footer);
+
+  const Booksection = document.createElement("section")
   const articleSection = document.createElement("article");
-  body.insertBefore(articleSection, footer);
 
+  const cover = document.createElement("img")
+  cover.classList = "cover";
+  cover.setAttribute("src", NTEF.cover);
+  cover.setAttribute("alt", "book cover");
+  cover.height = 300;
+  cover.width = 300;
+
+  Booksection.appendChild(cover);
+  Booksection.appendChild(articleSection)
+
+
+
+  
   // Insert Book Info to Article
   const bookHeader = document.createElement("h2");
   bookHeader.innerText = NTEF.bookTitle;
   articleSection.appendChild(bookHeader);
 
-  const bookAuthor = document.createElement("span");
-  bookAuthor.classList = "authors";
-  bookAuthor.innerText = NTEF.authors;
-  articleSection.appendChild(bookAuthor);
-
-  const bookYear = document.createElement("p");
+  const bookYear = document.createElement("span");
   bookYear.classList = "year";
   bookYear.innerText = NTEF.year;
   articleSection.appendChild(bookYear);
 
-  const bookGenre = document.createElement("p");
+  const bookGenre = document.createElement("span");
   bookGenre.classList = "genre";
   bookGenre.innerText = NTEF.genre;
   articleSection.appendChild(bookGenre);
 
-  const bookPublisher = document.createElement("p");
-  bookPublisher.classList = "publisher";
-  bookPublisher.innerText = NTEF.Publisher;
-  articleSection.appendChild(bookPublisher);
+    /// Author
 
-  const bookCover = document.createElement("img");
-  bookCover.setAttribute("src", NTEF.cover);
-  bookCover.classList = "cover";
-  articleSection.appendChild(bookCover);
+    const bookAuthor = document.createElement("div");
+
+    let authorText = document.createElement("span");
+    authorText.innerText = "Author:";
+    bookAuthor.appendChild(authorText);
+  
+    NTEF.authors.map((person) => {
+      let creator = document.createElement("a");
+      console.log(person)
+      creator.href = person.wiki;
+      creator.classList = `tooltip-container bookAuthor ${person.name}`;
+      creator.innerText = person.name;
+      bookAuthor.appendChild(creator);
+    });
+  
+    articleSection.appendChild(bookAuthor);
+  
+  
+    /// Publisher
+  
+    const  bookPublisher = document.createElement("div");
+  
+    let publisherText = document.createElement("span");
+    publisherText.innerText = "Publisher:";
+    bookPublisher.appendChild(publisherText);
+  
+    NTEF.Publisher.map((company) => {
+      let publisher = document.createElement("a");
+      publisher.href = company.wiki;
+      publisher.classList = `tooltip-container bookPublisher ${company.name}`;
+      publisher.innerText = company.name;
+      bookPublisher.appendChild(publisher);
+    });
+
+    articleSection.appendChild(bookPublisher);
 
   const bookPlot = document.createElement("p");
   bookPlot.classList = "plot";
@@ -292,46 +407,28 @@ window.onload = () => {
   articleSection.appendChild(bookPlot);
 
 
+  body.insertBefore(Booksection, footer);
   // Create tooltips for author name and book cover
-  const authorTooltip = createTooltip("Author: " + NTEF.authors);
-  bookAuthor.appendChild(authorTooltip);
-
-  const coverTooltip = createTooltip("Book Cover");
-  bookCover.parentNode.insertBefore(coverTooltip, bookCover.nextSibling);
-
-  // Show tooltips on hover over author name and cover image
-  bookAuthor.addEventListener("mouseenter", () => {
-      authorTooltip.style.display = "block";
-  });
-  bookCover.addEventListener("mouseenter", () => {
-      coverTooltip.style.display = "block";
-  });
-
-  // Hide tooltips on mouse leave from author name and cover image
-  bookAuthor.addEventListener("mouseleave", () => {
-      authorTooltip.style.display = "none";
-  });
-  bookCover.addEventListener("mouseleave", () => {
-      coverTooltip.style.display = "none";
-  });
+  const footerMenu = document.createElement("div");
+  footerMenu.classList = "footerMenu";
+  footerMenu.setAttribute("id", "footerMenu");
+  footerMenu.appendChild(createSectionMenu());
+  footerMenu.appendChild(createStyleMenu());
+  body.appendChild(footerMenu)
 
 
-//op deze manier werkt het maar de header en footer kunnen niet worden gecombineerd
-  header.style.position = "relative"; // Ensure the header has relative positioning
-    const dropdownMenu = createDropdownMenu();
-    dropdownMenu.style.position = "absolute"; 
-    dropdownMenu.style.left = "50%"; 
-    dropdownMenu.style.top =  "65%";
-    dropdownMenu.style.transform = "translateX(-50%)"; // Adjust for centering
-    header.parentNode.insertBefore(dropdownMenu, header.nextSibling);
-  footer.insertAdjacentElement('afterend', createDropdownMenu());
+  
+  //EVENTS
 
+  //tooltip events
+
+  articleSection.addEventListener("mouseover", (e) => insertTooltip(e));
+  articleSection.addEventListener("mouseout", (e) => deleteTooltip(e));
+
+  // menu events
+  header.addEventListener("change", (e) => SelectSection(e));
+  header.addEventListener("change", (e) => ChangeStyle(e));
+
+  footerMenu.addEventListener("change", (e) => SelectSection(e));
+  footerMenu.addEventListener("change", (e) => ChangeStyle(e));
 }
-
-// menu events
-
-header.addEventListener("change", (e) => SelectSection(e));
-header.addEventListener("change", (e) => ChangeStyle(e));
-
-footer.addEventListener("change", (e) => SelectSection(e));
-footer.addEventListener("change", (e) => ChangeStyle(e));
