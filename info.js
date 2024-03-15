@@ -318,7 +318,7 @@ window.onload = () => {
 
   headerMenu.appendChild(createSectionMenu());
   headerMenu.appendChild(createStyleMenu());
-  header.appendChild(headerMenu)
+  header.parentNode.insertBefore(headerMenu, header.nextSibling);
   const mainElem = document.createElement("main");
 
   const bannerElem = document.createElement("div");
@@ -347,11 +347,9 @@ window.onload = () => {
   cover.width = 300;
 
   Booksection.appendChild(cover);
-  Booksection.appendChild(articleSection)
 
 
 
-  
   // Insert Book Info to Article
   const bookHeader = document.createElement("h2");
   bookHeader.innerText = NTEF.bookTitle;
@@ -366,6 +364,13 @@ window.onload = () => {
   bookGenre.classList = "genre";
   bookGenre.innerText = NTEF.genre;
   articleSection.appendChild(bookGenre);
+
+
+
+  const bookPlot = document.createElement("p");
+  bookPlot.classList = "plot";
+  bookPlot.innerText = NTEF.plot;
+  articleSection.appendChild(bookPlot);
 
     /// Author
 
@@ -385,6 +390,7 @@ window.onload = () => {
     });
   
     articleSection.appendChild(bookAuthor);
+
   
   
     /// Publisher
@@ -405,12 +411,8 @@ window.onload = () => {
 
     articleSection.appendChild(bookPublisher);
 
-  const bookPlot = document.createElement("p");
-  bookPlot.classList = "plot";
-  bookPlot.innerText = NTEF.plot;
-  articleSection.appendChild(bookPlot);
 
-
+  Booksection.appendChild(articleSection)
   body.insertBefore(Booksection, footer);
   // Create tooltips for author name and book cover
   const footerMenu = document.createElement("div");
@@ -430,8 +432,8 @@ window.onload = () => {
   articleSection.addEventListener("mouseout", (e) => deleteTooltip(e));
 
   // menu events
-  header.addEventListener("change", (e) => SelectSection(e));
-  header.addEventListener("change", (e) => ChangeStyle(e));
+  headerMenu.addEventListener("change", (e) => SelectSection(e));
+  headerMenu.addEventListener("change", (e) => ChangeStyle(e));
 
   footerMenu.addEventListener("change", (e) => SelectSection(e));
   footerMenu.addEventListener("change", (e) => ChangeStyle(e));
