@@ -291,18 +291,22 @@ const insertTooltip = (e) => {
         ul.appendChild(li);
       }
       tooltip.appendChild(ul);
+
+      let wikiLink = document.createElement("a");
+      wikiLink.setAttribute("href", p[0].wiki);
+      wikiLink.innerText = "More info";
+      tooltip.appendChild(wikiLink);
+
+      tooltip.addEventListener("mouseleave", (event) => {
+        event.target.parentElement.removeChild(event.target);
+      });
+
       e.target.appendChild(tooltip);
     } catch (error) {}
   }
 };
 
-const deleteTooltip = (e) => {
-  try {
-    const tooltipContainer = e.target;
-    let tooltip = tooltipContainer.querySelector(".tooltipBox");
-    tooltipContainer.removeChild(tooltip);
-  } catch (error) {}
-};  
+
 
 
 window.onload = () => {
