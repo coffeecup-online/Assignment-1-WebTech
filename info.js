@@ -212,6 +212,24 @@ const createSectionMenu = () => {
     }
   };
 
+  const createDropdownMenu = () => {
+    const dropdownMenu = document.createElement("div");
+    dropdownMenu.classList.add("dropdown-menu");
+
+    // Create and append the section select menu
+    const selectSectionBox = createSectionMenu();
+    selectSectionBox.addEventListener("change", SelectSection);
+    dropdownMenu.appendChild(selectSectionBox);
+
+    // Create and append the style select menu
+    const selectStyleBox = createStyleMenu();
+    selectStyleBox.addEventListener("change", ChangeStyle);
+    dropdownMenu.appendChild(selectStyleBox);
+
+    return dropdownMenu;
+};
+
+
   const header = document.querySelector("header");
   const footer = document.querySelector("footer");
   const action = document.getElementById("action");
@@ -296,6 +314,17 @@ window.onload = () => {
   bookCover.addEventListener("mouseleave", () => {
       coverTooltip.style.display = "none";
   });
+
+
+//op deze manier werkt het maar de header en footer kunnen niet worden gecombineerd
+  header.style.position = "relative"; // Ensure the header has relative positioning
+    const dropdownMenu = createDropdownMenu();
+    dropdownMenu.style.position = "absolute"; 
+    dropdownMenu.style.left = "50%"; 
+    dropdownMenu.style.top =  "65%";
+    dropdownMenu.style.transform = "translateX(-50%)"; // Adjust for centering
+    header.parentNode.insertBefore(dropdownMenu, header.nextSibling);
+  footer.insertAdjacentElement('afterend', createDropdownMenu());
 
 }
 

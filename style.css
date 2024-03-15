@@ -223,3 +223,8 @@ header nav li {
   z-index: 1;
   display: none;
 }
+
+.dropdown-menu{
+  text-align: center;
+}
+
